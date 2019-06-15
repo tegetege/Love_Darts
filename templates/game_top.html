@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>{{ title }}</title>
+<link rel="stylesheet" type="text/css" href="button.css">
+</head>
+<body>
+	<p>
+		ゼロワン 
+		<form action = "/zero_one_game" method = "POST">
+			<input type = "hidden" name = "game_kind" value="301"/>
+		     <p><input type = "submit"  value = "301"/></p>
+		</form>
+		
+		<form action = "/zero_one_game" method = "POST">
+			<input type = "hidden" name = "game_kind" value="501"/>
+		     <p><input type = "submit"  value = "501"/></p>
+		</form>
+
+		<form action = "/zero_one_game" method = "POST">
+			<input type = "hidden" name = "game_kind" value="701"/>
+		     <p><input type = "submit"  value = "701"/></p>
+		</form>
+	</p>
+
+
+</body>
+</html>

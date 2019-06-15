@@ -1,0 +1,60 @@
+<html>
+	<body>
+		<form action="/reset" method="POST">
+		<button name="reset">リセット</button>
+		</form>
+		{% if result|length < 30%}
+			<table border = 1>
+				{% for item in result %}
+					<tr>
+						<td>
+							{% if item.ISBN != None %}
+								<form action="/browser" method="POST">
+								<button name="ISBN" value={{item.ISBN}}>webページに飛ぶ</button>
+								</form>
+							{% endif %} 
+						</td>  
+						<td>{{item.acceptance_date}}</td> 
+						<td>{{item.b_title}}</td>
+						<td>{{item.ISBN}}</td> 
+					</tr>
+				{% endfor %}
+			</table>
+		{% elif result|length > 30 %}
+			<p>候補数が{{result|length}}個と膨大になりました。</p>
+			<p>どのような本をお探しなのか、具体的に教えてください。</p>
+			<form action = "/confirm" method = "POST">
+         <p>どのような本をお探しですか？<input type = "text" name = "u_input" /></p>
+         <p><input type = "submit" value = "submit" /></p>
+      	</form>
+			<table border = 1>
+				{% for key_num in range(10,0,-1) %}
+					{% for item in result %}
+						{% if key_num == item.key_num%}
+							<tr>
+								<td>
+									{% if item.ISBN != None %}
+										<form action="/browser" method="POST">
+										<button name="ISBN" value={{item.ISBN}}>webページに飛ぶ</button>
+										</form>
+									{% endif %} 
+								</td>
+								<td>{{item.key_num}}</td>
+								<td>{{item.acceptance_date}}</td> 
+								<td>{{item.b_title}}</td>
+								<td>{{item.ISBN}}</td> 
+							</tr>
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			</table>
+		{% elif result|length ==0 %}
+		回答が見つかりませんでした。<br> 
+		どのような本をお探しなのか、具体的に教えてください。
+		<form action = "/confirm" method = "POST">
+         <p>どのような本をお探しですか？<input type = "text" name = "u_input" /></p>
+         <p><input type = "submit" value = "submit" /></p>
+      </form>
+		{% endif %}
+	</body>
+</html>
