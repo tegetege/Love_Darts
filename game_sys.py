@@ -13,7 +13,7 @@ class Count_01:
 	def set_80line(self,game_kind):
 		self.game_kind = int(game_kind)
 		self.game_80_line = self.game_kind*0.2
-		print(self.game_80_line)
+		# print(self.game_80_line)
 
 	def score_board_cal(self,score_board,round_score):
 
@@ -32,8 +32,8 @@ class Count_01:
 
 	def cal_stats(self):
 		if self.score_board <= self.game_80_line and self.stats == 0.0:
-			print("スタッツ計算")
-			print(self.game_log)
+			# print("スタッツ計算")
+			# print(self.game_log)
 			self.stats = (self.game_kind - self.score_board) / len(self.game_log)
 			return 
 		else:
@@ -43,7 +43,7 @@ class Count_01:
 	def delete_log(self):
 		self.game_log.clear()
 		self.stats = float(0.0)
-		print(self.stats)
+		# print(self.stats)
 
 	def set_game_log(self,round_score):
 		self.game_log.append(round_score)

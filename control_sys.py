@@ -30,7 +30,7 @@ def zero_one_game():
 			game_data['game_log'] =[]
 
 			if 'round_score' in result :
-				if int(result['round_score'][0]) >= 0 :
+				if int(result['round_score'][0]) >= 0 and int(result['round_score'][0]) <= 180:
 					game_data['score_board'] = count_01_cul.score_board_cal(result['score_board'][0],result['round_score'][0])
 					game_data['round_count'] = count_01_cul.get_round_count()
 					game_data['game_log'] = count_01_cul.get_game_log()
@@ -57,7 +57,7 @@ def zero_one_game():
 			game_data['game_log'] = count_01_cul.get_game_log()
 			game_data['round_count'] = len(game_data['game_log'])
 
-		#負の値が入力された場合のエラー処理
+		#負の値,181以上のスコアが入力された場合のエラー処理
 		#Error handling when input negative num
 		except MyException_bad_score:
 			game_data['error'] = '不正な値が入力されました'
@@ -65,7 +65,7 @@ def zero_one_game():
 			game_data['game_log'] = count_01_cul.get_game_log()
 			game_data['round_count'] = len(game_data['game_log'])
 
-		print(game_data)
+		# print(game_data)
 
 	return render_template('zero_one_game.html',title='zero_one_game',game_data = game_data)		
 
@@ -75,4 +75,4 @@ def zero_one_game():
 count_01_cul = game_sys.Count_01()
 
 if __name__ == "__main__":
-	app.run()
+	app.run(host='0.0.0.0',port=80)
