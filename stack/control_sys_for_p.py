@@ -1,21 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-'''
-(CAUTION!)This code id For Docker. 
-If you do this APP on your local, please swap this file
-with './stact/control_sys_for_p.py'.
-Not Available due to differences in behavior between 
-'python on local' and 'do python APP on Docker'.
-
-(注意!) このコードはDocker上で稼働する用のものです
-もしローカル環境で利用する場合は、'./stact/control_sys_for_p.py'
-とファイルを入れ替えてください。
-ローカル環境のpythonとDocker環境のpythonについての挙動の違いによって、
-エラーが出てしまいます。
-具体的な部分は、READMEに記載しました
-'''
-
 from flask import Flask, render_template, request
 
 #外部ファイルインポート
@@ -39,14 +24,16 @@ def zero_one_game():
 		#compile POST date for using 
 		result = request.form
 		result = dict(result)
+		app.logger.debug(result)
+
 
 		try: 
 			game_data = {}
 			game_data['game_log'] =[]
 
 			if 'round_score' in result :
-				if int(result['round_score']) >= 0 and int(result['round_score']) <= 180:
-					game_data['score_board'] = count_01_cul.score_board_cal(result['score_board'],result['round_score'])
+				if int(result['round_score'][0]) >= 0 and int(result['round_score'][0]) <= 180:
+					game_data['score_board'] = count_01_cul.score_board_cal(result['score_board'][0],result['round_score'][0])
 					game_data['round_count'] = count_01_cul.get_round_count()
 					game_data['game_log'] = count_01_cul.get_game_log()
 
@@ -61,14 +48,16 @@ def zero_one_game():
 					raise MyException_bad_score()
 			else:
 				#When 'Game Start'. Set 80% stats line
-				game_data['score_board'] = int(result['game_kind'])
-				count_01_cul.set_80line(result['game_kind'])
+
+				game_data['score_board'] = int(result['game_kind'][0])
+				count_01_cul.set_80line(result['game_kind'][0])
+
 
 		#文字列が入力された場合のエラー処理
 		#Error handling when input str()
 		except ValueError:
 			game_data['error'] = '不正な値が入力されました'
-			game_data['score_board'] = result['score_board']
+			game_data['score_board'] = result['score_board'][0]
 			game_data['game_log'] = count_01_cul.get_game_log()
 			game_data['round_count'] = len(game_data['game_log'])
 
@@ -76,7 +65,7 @@ def zero_one_game():
 		#Error handling when input negative num
 		except MyException_bad_score:
 			game_data['error'] = '不正な値が入力されました'
-			game_data['score_board'] = result['score_board']
+			game_data['score_board'] = result['score_board'][0]
 			game_data['game_log'] = count_01_cul.get_game_log()
 			game_data['round_count'] = len(game_data['game_log'])
 

@@ -1,11 +1,9 @@
-
 class Count_01:
 	"""docstring for Count_01"""
 	def __init__(self):
 		self.score_board = int()
 		self.game_80_line = int()
 		self.stats = float(0.0)
-		print(self.stats)
 		self.game_kind = int()
 		self.game_log    = []
 
