@@ -1,7 +1,7 @@
+// electronモジュールを読み込み
 const electron = require('electron');
 const {app} = electron;
-const {BrowserWindow} = electron;
-
+const {BrowserWindow} = electron; //ウィンドウを表す[BrowserWindow]はelectronモジュールに含まれている
 
 // 新しいウィンドウ(Webページ)を生成
 let win;
@@ -9,7 +9,7 @@ function createWindow() {
   // BrowserWindowインスタンスを生成
   win = new BrowserWindow({width: 800, height: 600});
   // index.htmlを表示
-  win.loadURL('file://' + __dirname + '/index.html');
+  win.loadURL('http://localhost:4000/');
   // デバッグするためのDevToolsを表示
   // win.webContents.openDevTools();
   // ウィンドウを閉じたら参照を破棄
@@ -30,28 +30,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-
-
-
-
-
-
-
-
-// const mainWindow = null;
-// app.on('window-all-closed', function () {
-//     //if (process.platform != 'darwin')
-//         app.quit();
-// });
-// app.on('ready', function () {
-//     // ブラウザ(Chromium)の起動, 初期画面のロード
-//     win = new BrowserWindow({width: 1000, height: 600});
-//     mainWindow.loadUrl('file://' + __dirname + '/index.html');
-//     mainWindow.on('closed', function () {
-//         mainWindow = null;
-//     });
-// });
-
-//参照サイト
-//https://qiita.com/mamosan/items/084039c3e6d703b7b45f

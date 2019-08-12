@@ -1,8 +1,15 @@
 {
-  "name": "myfirstapp",
+  "name": "tegetege_dartsapp",
   "version": "1.4.13",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
-  }
+  },
+  "description": "tegetege_dartsシステムのアプリケーション",
+  "repository": {
+    "type": "git",
+    "url": "tegetege"
+  },
+  "author": "tegetege",
+  "license": "ISC"
 }
