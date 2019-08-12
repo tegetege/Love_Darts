@@ -32,7 +32,7 @@ def game_top():
 	return render_template('game_top.html',title='game_top')
 
 
-@app.route('/zero_one_game', methods = ['POST', 'GET'])
+@app.route('/zero_one_game', methods = ['POST','GET'])
 def zero_one_game():
 
 	if request.method == 'POST':
@@ -84,6 +84,18 @@ def zero_one_game():
 
 	if request.method == 'GET':
 		return render_template('zero_one_game.html',title='zero_one_game')
+
+
+
+@app.route('/countup', methods = ['POST','GET'])
+def count_up():
+	if request.method == 'POST':
+		
+
+
+	elif request.method == 'GET':
+
+
 
 count_01_cul = game_sys.Count_01()
 

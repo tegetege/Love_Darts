@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>{{ title }}</title>
+	</head>
+	<body>
+		<p><font color="red">{{game_data.error}}</font></p>
+		<p>Score Board:{{ game_data.score_board }}</p>
+		<p>Round: {{game_data.round_count}} / 8</p>
+
+		<p>game_log:{{game_data.game_log}}</p>
+
+		<form action = "/countup" method = "POST">
+			<input type = "hidden" name = "score_board" value = {{game_data.score_board}} />
+			<input type = "hidden" name = "game_log" value = {{game_data.game_log}} />
+
+         <p>点数を入力<input type = "text" name = "round_score" /></p>
+         <p><input type = "submit" value = "submit" /></p>
+      	</form>
+
+      	<form action = "/" method = "GET">
+         <p><input type = "submit" value = "戻る"/></p>
+      	</form>
+
+
+	</body>
+</html> 
