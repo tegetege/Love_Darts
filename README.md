@@ -5,7 +5,15 @@ Overview
 家でダーツする時に、O1とかカウントアップとか、カウントしてくれるプログラム
 This system is just darts counting system for playing at home.
 
+## このアプリを起動する方法
+  1. `tegetege_darts_system/`で次のコマンドを利用してコントロールシステムを起動  
+    `python control_sys.py`
+  1. `tegetege_darts_system/App/electron`で次のコマンドを利用してElectronアプリを起動  
+    `npm run start`
+    
 
+
+## 注意事項
 (CAUTION!)file(control_sys.py) is For Docker. 
 If you do this APP on your local, please swap this file
 with './stact/control_sys_for_p.py'.
