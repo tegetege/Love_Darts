@@ -8,7 +8,7 @@ function createWindow() {
   // BrowserWindowインスタンスを生成
   win = new BrowserWindow({width: 800, height: 600});
   // index.htmlを表示
-  win.loadURL('https://yahoo.co.jp');
+  win.loadURL('http://0.0.0.0:80/');
   // デバッグするためのDevToolsを表示
   //win.webContents.openDevTools();
   // ウィンドウを閉じたら参照を破棄
