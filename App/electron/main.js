@@ -6,9 +6,11 @@ const {app,BrowserWindow,Notification} = electron;
 let win;
 function createWindow() {
   // BrowserWindowインスタンスを生成
-  win = new BrowserWindow({width: 800, height: 600});
+  win = new BrowserWindow({width: 800, height: 600,
+                          webPreferences: {webviewTag: true}});
   // index.htmlを表示
   win.loadURL('http://0.0.0.0:80/');
+  // win.loadURL('file://' + __dirname + '/index.html')
   // デバッグするためのDevToolsを表示
   //win.webContents.openDevTools();
   // ウィンドウを閉じたら参照を破棄
