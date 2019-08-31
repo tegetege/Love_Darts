@@ -1,10 +1,44 @@
 <html>
-<head></head>
-<body>
-	テスト
-	<webview id="foo" src="https://www.github.com/" style="display:inline-flex; width:640px; height:480px"></webview>
+<head>
+	<meta charset="UTF-8">
+	<title>2つのコンテンツを扱う例</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript">
+		var div1 = $('#y_top1');
+		var div2 = $('#y_top2');
 
-	<webview id="foo" src="https://www.github.com/" style="display:inline-flex; width:640px; height:480px"></webview>
+		div2.scroll(function() {
+
+		div1.scrollTop(div2.scrollTop());//縦スクロールを連動させる。
+		div1.scrollLeft(div2.scrollLeft());//横スクロールを連動させる。
+
+	});
+	</script>
+</head>
+<body>
+	<div class="content1">
+	<webview id="y_top1" 
+		src="https://www.yahoo.co.jp/" 
+		useragent="Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/69.0.3497.91 Mobile/15E148 Safari/605.1"
+		style="display:inline-flex; width:320px; height:600px"></webview>
+	</div>
+	<div class="space"></div>
+
+	<div class="content2">
+	<webview id="y_top2" 
+		src="https://www.yahoo.co.jp/" 
+		useragent="Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/69.0.3497.91 Mobile/15E148 Safari/605.1"
+		style="display:inline-flex; width:320px; height:600px"></webview>
+	</div>
+
+
+
+
+	<p>
+		<textarea id="before" onKeyDown="reflectNow()"></textarea>
+		<div id="after" ></div>
+	</p>
+
 
 
 </body>
